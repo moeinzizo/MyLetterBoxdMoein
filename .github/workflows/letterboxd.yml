@@ -1,0 +1,38 @@
+name: Letterboxd to Telegram
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Test: send the latest item of each friend"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: letterboxd
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run bot
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+          TEST_MODE: ${{ github.event.inputs.test }}
+        run: python3 bot.py
+
+      - name: Save state
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet || (git commit -m "update state" && git push)
