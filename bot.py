@@ -6,8 +6,10 @@ import xml.etree.ElementTree as ET
 # ============ فقط این بخش رو ویرایش کن ============
 # "یوزرنیم در لترباکس": "اسمی که می‌خوای به‌صورت تگ بیاد"
 FRIENDS = {
-    "Alireza Shirazi": "Rezali",
+    "rezali": "Rezali",
     "Bahaar_": "Bahare shirazi",
+    "SalaRah": "Salar Rahimi",
+    "mahmoudreza": "Mahmood Taghavi",
     # "another_user": "سارا",
 }
 # ==================================================
