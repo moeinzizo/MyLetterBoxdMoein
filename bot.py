@@ -19,7 +19,6 @@ FRIENDS = {
     "elhumanl": "Elham",
     "nimahamed88": "Nima Hamed",
     "nagualwitch": "NagualWitch",
-    "chekkechekke": "‮‬chekkechekke",
     "royabr": "Roya Br",
     "m_yousof_r": "Yousof Rafizadeh",
     "cloudmooni": "Cloudmooni",
