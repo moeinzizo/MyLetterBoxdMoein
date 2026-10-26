@@ -122,6 +122,13 @@ def clean_description(desc):
 def tag_for(name):
     return "#" + re.sub(r"[^\w]", "_", name, flags=re.U)
 
+def tmdb_link(item):
+    if item.get("movieId"):
+        return f"https://www.themoviedb.org/movie/{item['movieId']}"
+    if item.get("tvId"):
+        return f"https://www.themoviedb.org/tv/{item['tvId']}"
+    return None
+
 
 def build_message(item, friend_name):
     e = html.escape
@@ -146,6 +153,9 @@ def build_message(item, friend_name):
     if rating_line:
         lines.append(rating_line)
     lines.append(f"👤 {tag_for(friend_name)}")
+    tmdb_url = tmdb_link(item)
+    if tmdb_url:
+        lines.append(f'🌐 <a href="{e(tmdb_url)}">TMDB</a>')
 
     if review:
         lines.append("")
